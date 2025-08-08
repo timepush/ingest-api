@@ -1,0 +1,35 @@
+# Build artifacts
+bin/
+obj/
+out/
+artifacts/
+
+# IDE cruft
+.vs/
+*.user
+*.suo
+.idea/
+*.sln.iml
+
+# Tests & coverage
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Local-only config & secrets
+.env
+appsettings.*.Local.json
+*.pfx
+*.p12
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+.vscode/
