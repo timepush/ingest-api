@@ -1,9 +1,10 @@
 
+
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Timepush.IngestApi.Errors;
+namespace Timepush.Ingest.Exceptions;
 
 public class GlobalExceptionHandler(IProblemDetailsService problemDetailsService, ILogger<GlobalExceptionHandler> logger) : IExceptionHandler
 {

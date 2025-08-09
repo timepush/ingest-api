@@ -1,6 +1,9 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.DependencyInjection;
+using Timepush.Ingest.Exceptions;
 
-namespace Timepush.IngestApi.Errors;
+namespace Timepush.Ingest.Exceptions;
 
 public static class ExceptionHandlingExtensions
 {
