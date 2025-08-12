@@ -1,8 +1,7 @@
-using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Timepush.Ingest.Exceptions;
+namespace Timepush.IngestApi.Errors;
 
 public class BadHttpRequestExceptionHandler(IProblemDetailsService problemDetailsService, ILogger<BadHttpRequestExceptionHandler> logger) : IExceptionHandler
 {

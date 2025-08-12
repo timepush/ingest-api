@@ -1,17 +1,22 @@
+
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using FluentValidation;
+using System;
+using System.Collections.Generic;
+using Timepush.IngestApi.Features.Ingest.Raw;
 
-namespace Timepush.Ingest.Features.Ingest.Raw;
+namespace Timepush.IngestApi.Features.Ingest.Raw;
 
-public class Validation : AbstractValidator<RawRequest>
+public class IngestValidation : AbstractValidator<RawRequest>
 {
-  public Validation()
+  public IngestValidation()
   {
     RuleFor(x => x.Timestamp)
         .Must(t => t.Offset == TimeSpan.Zero) // Require UTC
         .WithMessage("Timestamp must be in UTC (ending with Z).");
+
     RuleFor(x => x.Value)
             .Must(v => !double.IsNaN(v) && !double.IsInfinity(v))
             .WithMessage("Value must be a finite number.");
@@ -36,14 +41,16 @@ public class Validation : AbstractValidator<RawRequest>
   }
 }
 
-public class BatchValidation : AbstractValidator<List<RawRequest>>
+public class BatchIngestValidation : AbstractValidator<List<RawRequest>>
 {
-  public BatchValidation()
+  public BatchIngestValidation()
   {
     RuleFor(x => x)
       .NotEmpty()
-      .WithMessage("Batch cannot be empty.");
-    RuleForEach(x => x).SetValidator(new Validation());
+      .WithMessage("Batch cannot be empty.")
+      .Must(x => x.Count <= 86400)
+      .WithMessage("Batch cannot exceed 86,400 rows.");
+    RuleForEach(x => x).SetValidator(new IngestValidation());
   }
 }
 

@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Timepush.Ingest.Filters;
+namespace Timepush.IngestApi.Lib;
 
 public class ValidationFilter<T> : IEndpointFilter where T : class
 {
