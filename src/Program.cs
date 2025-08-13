@@ -5,8 +5,7 @@ using Timepush.IngestApi.Features.Ingest;
 using Timepush.IngestApi.Lib;
 
 //TODO: 
-// Add Rate limit
-// Add response for Accepted
+// Add Rate limit 
 
 var builder = WebApplication.CreateBuilder(args);
 
