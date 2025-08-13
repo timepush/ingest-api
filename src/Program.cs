@@ -11,6 +11,7 @@ using Timepush.IngestApi.Lib;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddExceptionHandlers();
+builder.ConfigureJson();
 builder.ConfigureKestrelServer();
 builder.ConfigureOptions();
 builder.ConfigurePostgres();

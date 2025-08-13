@@ -16,6 +16,7 @@ public static class ExceptionHandlingExtensions
             context.ProblemDetails.Extensions.TryAdd("traceId", activity?.Id);
           };
     });
+    services.AddExceptionHandler<JsonExceptionHandler>();
     services.AddExceptionHandler<BadHttpRequestExceptionHandler>();
     services.AddExceptionHandler<GlobalExceptionHandler>();
     return services;
